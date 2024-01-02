@@ -27,3 +27,17 @@ const images = [
     alt: 'Zebras on Zebra',
   },
 ];
+
+const imgContainer = document.querySelector('.gallery');
+function imgTemplate (obj) {
+  const imgUrl = obj.url;
+  const imgAlt = obj.alt;
+  return `<li class="gallery-item">
+        <img
+          src="${imgUrl}"
+          alt="${imgAlt}"
+                 />
+      </li>`;
+}
+const markup = images.map(imgTemplate).join('\n\n');
+imgContainer.innerHTML = markup;
