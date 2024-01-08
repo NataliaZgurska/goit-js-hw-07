@@ -3,14 +3,12 @@ const outputName = document.querySelector('#name-output');
 
 inputName.addEventListener('input', onInputHandle);
 
-let userName;
-
 function onInputHandle() {
-  userName = `${inputName.value}`;
+  let userName = inputName.value.trim();
 
-if (userName.trim() == '') {
-  userName = 'Anonymous';
-}
-      
-  outputName.innerHTML = userName.trim();  
+  if (userName == '') {
+    userName = 'Anonymous';
+  }
+  
+  outputName.textContent = userName;  
 }

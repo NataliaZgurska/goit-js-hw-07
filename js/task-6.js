@@ -1,48 +1,45 @@
 const box = document.querySelector('#boxes');
-const inputElem = document.querySelector('#controls')
+const controlContainer = document.querySelector('#controls')
 const buttonCreate = document.querySelector('button[data-create]');
 const buttonDestroy = document.querySelector('button[data-destroy]');
 
 buttonCreate.addEventListener('click', onButtonCreateClick)
 buttonDestroy.addEventListener('click', onButtonDestroyClick)
 
-let inputValue;
 let amount;
-let boxArray;
 
 function onButtonCreateClick() {
-  inputValue = Number(inputElem.firstElementChild.value);
-
-if (inputValue >= 1 && inputValue <= 100) {
-  amount = inputValue;
-} else {
-  if (inputValue > 100) {
-    amount = 0;
-  } 
+  box.innerHTML = '';
+  const inputValue = Number(controlContainer.firstElementChild.value);
+  
+  if (inputValue >= 1 && inputValue <= 100) {
+    amount = inputValue;
+    createBoxes(amount);
+  } else if (inputValue == '') {
+       createBoxes(amount);
+  }
+  controlContainer.firstElementChild.value = '';
 }
-  createBoxes(amount);
-  box.innerHTML = boxArray.join(' '); 
-  inputElem.firstElementChild.value = '';
-}
-
 
 function onButtonDestroyClick() {
   box.innerHTML = '';
 }
 
 function createBoxes(amount) {
-  boxArray = [];
-  let boxWidth = 20;
-  let boxHeight = 20;
-  let bgColor;
- for (let index = 0; index < amount; index++) {
-   boxWidth += 10;
-   boxHeight += 10;
-   bgColor = getRandomHexColor();
-   const boxElem =  `<div style="width: ${boxWidth}px; height: ${boxHeight}px; background-color: ${bgColor};"></div>`
-   boxArray.push(boxElem);
- }
-  return boxArray;
+  let boxWidth = 30;
+  let boxHeight = 30;
+ 
+  for (let index = 0; index < amount; index++) {
+    const boxNew = document.createElement('div');
+    boxNew.classList.add('box');
+    boxNew.style.width = `${boxWidth}px`;
+    boxNew.style.height = `${boxHeight}px`;
+    boxNew.style.backgroundColor = getRandomHexColor();
+    box.append(boxNew);
+
+    boxWidth += 10;
+    boxHeight += 10;
+  }
 }
 
 function getRandomHexColor() {

@@ -8,7 +8,7 @@ btnColor.addEventListener('click', onButtonClick);
 function onButtonClick() {
   const bgColor = getRandomHexColor();
   bodyElem.style.backgroundColor = bgColor;
-  spanElem.textContent = `${bgColor}`
+  spanElem.textContent = bgColor
 }
 
 function getRandomHexColor() {

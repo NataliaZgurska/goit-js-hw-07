@@ -1,5 +1,5 @@
-const ulElem = document.querySelector('#categories');
-const liElems = ulElem.querySelectorAll('.item')
+const liElems = document.querySelectorAll('.item')
+
 console.log('Number of categories:', liElems.length);
 
 liElems.forEach((element) => {

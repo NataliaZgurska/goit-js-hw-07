@@ -11,8 +11,9 @@ if (email == '' || password == '') {
     alert('All form fields must be filled in')
 } else {
     const userData = { email, password };
-    console.log(userData)
+    console.log(userData);
+    form.reset();
 }
    
-form.reset();
+
 }
