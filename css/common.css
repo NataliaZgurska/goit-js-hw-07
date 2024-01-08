@@ -113,6 +113,11 @@ ul {
   cursor: pointer;
 }
 
+#controls {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
 .boxes-creating {
   margin-top: 20px;
   display: flex;
